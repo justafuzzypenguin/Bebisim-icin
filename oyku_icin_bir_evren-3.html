@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d20">
+<title>Öykü İçin Bir Evren ✦</title>
+<style>
+:root{--night:#090d20;--navy:#111a36;--lav:#b9a9ff;--pink:#f4b9d0;--gold:#f4dfaa;--white:#f8f6ff;--muted:#c4c5dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:var(--white);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
+#stars{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,#26315c 0%,#101832 40%,#090d20 80%)}
+#stars:before,#stars:after{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20px 30px,#fff 98%,transparent),radial-gradient(1px 1px at 90px 130px,#e7d9ff 98%,transparent),radial-gradient(2px 2px at 180px 80px,#fff 98%,transparent),radial-gradient(1px 1px at 260px 190px,#fff 98%,transparent);background-size:300px 230px;opacity:.45;animation:twinkle 6s infinite alternate}
+#stars:after{transform:translate(80px,40px);opacity:.25;animation-delay:2s}
+@keyframes twinkle{to{opacity:.8;filter:brightness(1.5)}}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:17px clamp(18px,5vw,65px);background:#090d20aa;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff12}
+.brand{letter-spacing:.16em;text-transform:uppercase;font:11px Arial,sans-serif;color:var(--gold)}
+nav{display:flex;gap:20px;font:12px Arial,sans-serif;color:var(--muted)}nav a:hover{color:white}
+#music{border:1px solid #ffffff35;background:#ffffff0b;color:white;border-radius:99px;padding:9px 13px;font:11px Arial,sans-serif}
+section{padding:110px 22px;max-width:1050px;margin:auto;position:relative}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-top:130px}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.moon{width:140px;height:140px;border-radius:50%;margin:25px auto 30px;background:radial-gradient(circle at 35% 35%,#fff9df,#ead8a2 48%,#a99570 75%);box-shadow:0 0 35px #f5dfa966,0 0 100px #c4b3ff33;position:relative;animation:float 5s ease-in-out infinite}
+.moon:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:#131c3b;left:38px;top:-10px}
+@keyframes float{50%{transform:translateY(-12px)}}
+h1{font-size:clamp(42px,8vw,82px);font-weight:400;line-height:1.03;margin:0 0 18px}
+.subtitle{color:var(--muted);font-size:clamp(15px,2vw,19px);line-height:1.7;max-width:590px;margin:0 auto 30px}
+.btn{border:1px solid #d9c8ff80;background:linear-gradient(120deg,#bba7ff2b,#f4b9d02b);color:white;border-radius:99px;padding:13px 23px;transition:.25s;box-shadow:0 0 25px #bba7ff12}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 28px #bba7ff40}
+.section-head{text-align:center;margin-bottom:38px}.section-head h2{font-size:clamp(30px,5vw,48px);font-weight:400;margin:12px 0}.section-head p{color:var(--muted);line-height:1.6}
+.panel{background:linear-gradient(145deg,#ffffff12,#ffffff05);border:1px solid #ffffff20;border-radius:24px;padding:clamp(22px,4vw,38px);box-shadow:0 20px 70px #0003}
+.center{text-align:center}
+.question{font-size:clamp(27px,5vw,43px);margin:4px 0 12px}.button-stage{height:130px;position:relative;display:flex;justify-content:center;align-items:center;gap:22px;margin-top:22px}
+.choice{border:0;border-radius:99px;padding:13px 30px;font:14px Arial,sans-serif;transition:all .25s}
+#yes{background:linear-gradient(120deg,#f4b9d0,#c5b2ff);color:#25162c;font-weight:bold;box-shadow:0 7px 25px #eab8db35;z-index:2}
+#no{background:#ffffff12;color:#fff;border:1px solid #ffffff35;position:relative}
+#love-result{min-height:30px;color:var(--gold);margin-top:12px}
+.box-scene{width:160px;height:130px;margin:25px auto 15px;position:relative;cursor:pointer}
+.gift{position:absolute;bottom:0;left:20px;width:120px;height:82px;background:#b66a91;border-radius:5px 5px 12px 12px;box-shadow:inset -8px 0 #8d4b78}
+.gift:before{content:"";position:absolute;left:52px;top:0;width:18px;height:100%;background:#f1d79c}
+.lid{position:absolute;left:10px;top:34px;width:140px;height:25px;background:#d88eae;border-radius:5px;transform-origin:left bottom;transition:.8s;z-index:2}
+.lid:before{content:"";position:absolute;left:57px;top:-16px;width:26px;height:18px;border:6px solid #f1d79c;border-radius:50% 50% 0 50%;transform:rotate(25deg)}
+.box-scene.open .lid{transform:translate(18px,-45px) rotate(-25deg)}
+.flowers{position:absolute;left:50%;bottom:30px;transform:translateX(-50%) scale(.2);opacity:0;transition:1s;font-size:34px;white-space:nowrap;z-index:3}
+.box-scene.open .flowers{transform:translate(-50%,-75px) scale(1);opacity:1}
+.reveal{opacity:0;transform:translateY(12px);transition:.8s}.reveal.show{opacity:1;transform:none}
+.letter{max-width:650px;margin:22px auto 0;background:#f4e8d7;color:#46364a;padding:28px 30px;border-radius:5px;box-shadow:0 12px 40px #0005;transform:rotate(-1deg);font-size:18px;line-height:1.8}
+.star-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;max-width:700px;margin:30px auto}
+.star{border:0;background:transparent;color:#f9e7a8;font-size:clamp(24px,5vw,39px);text-shadow:0 0 18px #f9e7a8;animation:starPulse 2.4s infinite alternate}
+.star:nth-child(2n){animation-delay:.7s}.star:nth-child(3n){animation-delay:1.2s}
+@keyframes starPulse{to{opacity:.45;transform:scale(.82)}}
+#star-message{min-height:75px;color:var(--muted);line-height:1.7;text-align:center;max-width:620px;margin:auto}
+.meter-wrap{max-width:450px;margin:25px auto}.meter{height:14px;background:#ffffff18;border-radius:30px;overflow:hidden}.meter-fill{height:100%;width:0;background:linear-gradient(90deg,#bca9ff,#f4b9d0,#f4dfaa);transition:width .4s;border-radius:30px}
+.meter-label{font:12px Arial,sans-serif;color:var(--muted);margin-top:12px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.memory{min-height:170px;border:1px solid #ffffff25;border-radius:15px;background:linear-gradient(145deg,#e9bfd22a,#bba7ff19);display:grid;place-items:center;text-align:center;padding:18px;cursor:pointer;transition:.3s}
+.memory:hover{transform:translateY(-5px);background:#ffffff20}.memory span{font-size:30px;display:block;margin-bottom:12px}.memory small{font:11px Arial,sans-serif;letter-spacing:.1em;color:var(--gold)}
+.memory p{font-size:14px;color:var(--muted);line-height:1.5;margin:10px 0 0}
+.well{font-size:56px;cursor:pointer;display:inline-block;transition:.3s}.well:hover{transform:scale(1.1)}
+.bouquet{font-size:42px;letter-spacing:5px;min-height:65px;margin:15px}
+.flower-btn{background:#ffffff12;border:1px solid #ffffff2a;color:white;border-radius:50%;width:48px;height:48px;margin:5px;font-size:23px}
+.forecast{font-size:clamp(22px,4vw,36px);color:var(--gold);line-height:1.5}
+.final{padding-bottom:140px;text-align:center}.final h2{font-size:clamp(38px,7vw,68px);font-weight:400}.final-note{max-width:650px;margin:25px auto;line-height:1.9;color:#e0dced;font-size:18px}
+footer{text-align:center;padding:25px;color:#8f91ad;font:11px Arial,sans-serif;letter-spacing:.12em}
+#toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f4e8d7;color:#30263a;padding:13px 20px;border-radius:99px;z-index:30;transition:.3s;font:13px Arial,sans-serif;max-width:90%;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.confetti{position:fixed;z-index:25;pointer-events:none;font-size:22px;animation:fall 2.5s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:0}}
+@media(max-width:650px){nav{display:none}.gallery{grid-template-columns:1fr 1fr}.star-grid{grid-template-columns:repeat(4,1fr)}section{padding:85px 17px}.button-stage{gap:10px}.choice{padding:12px 20px}.letter{font-size:16px;padding:22px}}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<header><div class="brand">✦ Öykü’ye özel bir evren</div><nav><a href="#love">Aşk testi</a><a href="#garden">Çiçek bahçesi</a><a href="#stars-section">Yıldızlar</a><a href="#memories">Anılar</a><a href="#letter">Mektup</a></nav><button id="music">♫ Müzik: kapalı</button></header>
+<main>
+<section class="hero" id="home">
+  <div><div class="eyebrow">Sadece senin için hazırlanmış küçük bir yer</div><div class="moon"></div><h1>Öykü için<br><i>Bir Evren</i></h1><p class="subtitle">Yıldızlarla kalbim arasında bir yerde sen varsın. Keşfetmen için sana küçücük bir dünya hazırladım.</p><a class="btn" href="#love">Evrenime adım at ✦</a></div>
+</section>
+
+<section id="love">
+ <div class="section-head"><div class="eyebrow">Önce en önemli şey</div><h2>Çok önemli bir soru</h2><p>İyice düşün ve cevabını seç. (Seçebilirsen tabii.)</p></div>
+ <div class="panel center"><div class="question">Beni seviyor musun, Öykü? ♡</div><p style="color:var(--muted)">Aslında tek bir doğru cevap var. Bunu ikimiz de biliyoruz. ♡</p>
+  <div class="button-stage"><button class="choice" id="yes">EVET ♡</button><button class="choice" id="no">Hayır</button></div><div id="love-result"></div>
+ </div>
+</section>
+
+<section id="garden">
+ <div class="section-head"><div class="eyebrow">Sana küçük bir sürpriz</div><h2>Tak tak...</h2><p>Kapına senin için küçük bir şey bırakılmış.</p></div>
+ <div class="panel center"><p style="color:var(--muted)">Kutuyu açmak için üzerine üç kez tıkla.</p><div class="box-scene" id="giftbox" role="button" aria-label="Hediye kutusuna üç kez vur"><div class="flowers">🌷 🌸 🌹 🌼 🌷</div><div class="lid"></div><div class="gift"></div></div><div id="knock-count" style="color:var(--gold)">Vuruş: 0 / 3</div>
+  <div class="reveal" id="flower-note"><div class="letter">Öykü, sana çiçek vermek istedim ama sonra tek bir buketin yetmeyeceğini düşündüm. O yüzden sana kocaman bir bahçe getirdim. Her çiçek, dünyamı nasıl güzelleştirdiğinin küçük bir hatırlatıcısı olsun. ♡</div></div>
+ </div>
+ <div class="panel center" style="margin-top:18px"><div class="eyebrow">Kendi buketini hazırla</div><h3 style="font-weight:400;font-size:25px">Çiçeklerini seç</h3><div class="bouquet" id="bouquet">Buketini burada oluşturabilirsin</div><button class="flower-btn" data-flower="🌷">🌷</button><button class="flower-btn" data-flower="🌹">🌹</button><button class="flower-btn" data-flower="🌼">🌼</button><button class="flower-btn" data-flower="🌸">🌸</button><button class="flower-btn" data-flower="💐">💐</button></div>
+</section>
+
+<section id="stars-section">
+ <div class="section-head"><div class="eyebrow">Yedi küçük sır</div><h2>Yıldızlarını bul</h2><p>Her yıldız, sana dair hissettiklerimden küçük bir parça saklıyor. Hepsine dokun.</p></div>
+ <div class="panel"><div class="star-grid" id="star-grid"></div><div id="star-message">Yukarıdaki yıldızlardan birini seç ✦</div></div>
+</section>
+
+<section id="meter-section">
+ <div class="section-head"><div class="eyebrow">Bilimsel bir ölçüm</div><h2>Seni ne kadar seviyorum?</h2><p>Muhtemelen ölçülemeyecek bir şeyi ölçmeme yardım et.</p></div>
+ <div class="panel center"><div style="font-size:50px">♡</div><div class="meter-wrap"><div class="meter"><div class="meter-fill" id="meter-fill"></div></div><div class="meter-label" id="meter-label">%0 — başlamak için kalbe dokun</div></div><button class="btn" id="meter-btn">Biraz daha sevgi ekle ♡</button></div>
+</section>
+
+<section id="memories">
+ <div class="section-head"><div class="eyebrow">Bizim küçük müzemiz</div><h2>Sakladığım anlar</h2><p>Her çerçeveye dokun. Bu örnekleri kendi anılarımızla değiştirebilirsin.</p></div>
+ <div class="gallery" id="gallery">
+  <div class="memory" data-message="İlk kez gerçekten konuştuğumuz zaman. O gün, benim için ne kadar önemli biri olacağını henüz bilmiyordum."><div><span>✉️</span><small>BAŞLANGIÇ</small><p>Her zaman hatırlayacağım bir sohbet.</p></div></div>
+  <div class="memory" data-message="Ekrana bakarken kendi kendime gülümsediğimi fark ettiğim anlardan biri."><div><span>☾</span><small>KÜÇÜK BİR AN</small><p>Sıradan bir günü güzelleştirdiğin an.</p></div></div>
+  <div class="memory" data-message="Umarım birlikte, yan yana ve aramızdaki tüm mesafelere rağmen daha nice anı biriktiririz."><div><span>✧</span><small>SIRADAKİ BÖLÜM</small><p>Bizi bekleyen daha nice güzel an var.</p></div></div>
+ </div>
+</section>
+
+<section id="extras">
+ <div class="section-head"><div class="eyebrow">Birkaç küçük şey daha</div><h2>İçimden geldiği için</h2></div>
+ <div class="gallery">
+  <div class="panel center"><div style="font-size:40px">🌙</div><h3 style="font-weight:400">Ay</h3><p style="color:var(--muted);line-height:1.6">Ayın kendi ışığı var ama bir şekilde benim ışığım sen oldun.</p></div>
+  <div class="panel center"><div style="font-size:40px">🪙</div><h3 style="font-weight:400">Dilek kuyusu</h3><p style="color:var(--muted)">Bir dilek tut ve evrenin sana ne söyleyeceğini gör.</p><div class="well" id="wish">⛲</div><div id="wish-text" style="color:var(--gold);min-height:25px"></div></div>
+  <div class="panel center"><div style="font-size:40px">☁️</div><h3 style="font-weight:400">Bugünün hava durumu</h3><div class="forecast">Seni özleme ihtimalim<br>%100.</div></div>
+ </div>
+</section>
+
+<section class="final" id="letter">
+ <div class="eyebrow">Son bir şey</div><h2>Senin için,<br><i>daima.</i></h2><p class="subtitle">Bir internet sitesine sığdıramayacağım kadar çok şey var içimde. Yine de ne kadar sevildiğini hatırlatacak, evrenin küçük bir köşesi olsun istedim.</p>
+ <button class="btn" id="open-letter">Mektubunu aç ♡</button>
+ <div class="reveal" id="final-letter"><div class="letter"><div style="text-align:center;font-size:28px">☾ ✦ ♡</div><p>Sevgilim Öykü,</p><p>Bazen evrendeki bütün güzel şeyleri toplayıp avuçlarına bırakabilmeyi diliyorum. Belki o zaman benim için ne kadar değerli olduğunu biraz olsun anlatabilirdim.</p><p>Bunu yapabildiğim güne kadar, özenle hazırladığım ve kalbimden küçük parçalar taşıyan bu evren senin olsun. Ay ne kadar uzakta görünürse görünsün, umarım sevgimi hep yanı başında hissedersin.</p><p>Tüm sevgimle,<br><b>Her zaman senin olan kişi.</b></p></div></div>
+</section>
+</main>
+<footer>SEVGİYLE HAZIRLANDI · AYNI GÖKYÜZÜNÜN ALTINDA ✦</footer>
+<div id="toast"></div>
+<audio id="audio" loop preload="none"></audio>
+<script>
+const $=s=>document.querySelector(s);
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2300)}
+function confetti(){const symbols=['♡','✦','🌸','✨','🌷'];for(let i=0;i<34;i++){let e=document.createElement('div');e.className='confetti';e.textContent=symbols[Math.floor(Math.random()*symbols.length)];e.style.left=Math.random()*100+'vw';e.style.top='-30px';e.style.animationDelay=Math.random()*.8+'s';document.body.append(e);setTimeout(()=>e.remove(),3500)}}
+let yesSize=1,noCount=0;
+$('#no').addEventListener('click',()=>{noCount++;yesSize=Math.min(yesSize+.22,3.1);$('#yes').style.transform=`scale(${yesSize})`;$('#yes').style.padding=`${13*yesSize}px ${30*yesSize}px`;const n=$('#no'),stage=$('.button-stage');const maxX=Math.max(0,stage.clientWidth-n.offsetWidth-15),maxY=70;n.style.position='absolute';n.style.left=Math.random()*maxX+'px';n.style.top=(Math.random()*maxY-20)+'px';$('#love-result').textContent=['Emin misin? 🥺','Galiba bu buton biraz utangaç.','EVET butonu gittikçe güçleniyor...','Bence cevabı zaten biliyorsun ♡'][Math.min(noCount-1,3)];if(noCount>=5){n.style.opacity='.35';$('#love-result').textContent='Evren kararını verdi. Bence EVET demelisin. ✨'}});
+$('#yes').addEventListener('click',()=>{$('#love-result').textContent='DOĞRU CEVAP. SONSUZ SEVGİ AÇILDI. ♡';confetti();toast('Az önce bütün evreni aydınlattın, Öykü ✦')});
+let knocks=0;$('#giftbox').addEventListener('click',()=>{if(knocks<3)knocks++;$('#knock-count').textContent=`Vuruş: ${knocks} / 3`;if(knocks===3){$('#giftbox').classList.add('open');$('#flower-note').classList.add('show');confetti();}});
+const starMessages=['Sıradan sohbetleri bile özel hissettirişini seviyorum.','Gülüşün, zor bir günü bile güzelleştirebiliyor.','Dünyaya kendine özgü bakışını seviyorum.','Seninle mesafeler biraz daha kısa geliyor.','Seni sen yapan küçücük ayrıntılara hayranım.','Birlikte yaşayacağımız tüm güzel anıları şimdiden heyecanla bekliyorum.','Takip edeceğim bir yıldız seçebilseydim, beni her zaman sana götüreni seçerdim.'];
+const grid=$('#star-grid');starMessages.forEach((m,i)=>{let b=document.createElement('button');b.className='star';b.textContent='✦';b.setAttribute('aria-label',(i+1)+'. yıldız');b.addEventListener('click',()=>{$('#star-message').textContent=m;});grid.append(b)});
+let love=0;$('#meter-btn').addEventListener('click',()=>{love++;let pct=Math.min(love*10,100);$('#meter-fill').style.width=pct+'%';$('#meter-label').textContent=love<10?`%${pct} — devam et ♡`:'HATA: SONSUZ SEVGİ ALGILANDI';if(love>=10){$('#meter-fill').style.width='100%';$('#meter-label').textContent='∞ — ölçülmesi mümkün değil. ♡';confetti()}});
+document.querySelectorAll('.memory').forEach(el=>el.addEventListener('click',()=>toast(el.dataset.message)));
+let bouquet=[];document.querySelectorAll('.flower-btn').forEach(b=>b.addEventListener('click',()=>{bouquet.push(b.dataset.flower);$('#bouquet').textContent=bouquet.join(' ') }));$('#wish').addEventListener('click',()=>{$('#wish-text').textContent=['Umarım birlikte geçirecek koca bir ömrümüz olur.','Umarım bir gün bu mesafeyi geride kalmış bir hikâye olarak anlatırız.','Keşke kendini bir de benim gözlerimden görebilsen.','Umarım her yeni gün bizi birbirimize biraz daha yaklaştırır.'][Math.floor(Math.random()*4)];toast('Dileğin evrene gönderildi, Öykü ✨')});
+$('#open-letter').addEventListener('click',()=>{$('#final-letter').classList.toggle('show');confetti();$('#open-letter').textContent='Biraz daha sevgi ♡'});
+// Arka plan müziği için aşağıdaki audio öğesine kendi müzik dosyanın yolunu ekleyebilirsin.
+let playing=false;$('#music').addEventListener('click',async()=>{const a=$('#audio');if(!a.src){toast('Müziği açmak için HTML dosyasına kendi müzik dosyanı eklemelisin.');return;}try{if(playing){a.pause();playing=false;$('#music').textContent='♫ Müzik: kapalı'}else{await a.play();playing=true;$('#music').textContent='♫ Müzik: açık'}}catch(e){toast('Müziği başlatmak için yeniden dokun.')}});
+</script>
+</body>
+</html>
